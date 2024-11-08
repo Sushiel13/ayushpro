@@ -36,32 +36,34 @@
     <div id="ticTacToe" class="tab-content">
         <h2>Tic-Tac-Toe</h2>
         <div class="game-controls">
-            <button onclick="setGameMode('single')" id="singlePlayerBtn">Single Player</button>
-            <button onclick="setGameMode('two')" id="twoPlayerBtn">Two Players</button>
+            <button onclick="setGameMode('single')" id="singlePlayerBtn" class="ttt-btn">Single Player</button>
+            <button onclick="setGameMode('two')" id="twoPlayerBtn" class="ttt-btn">Two Players</button>
         </div>
         <div class="game-info">
             <p>Current Mode: <span id="gameMode">Two Players</span></p>
             <p>Current Turn: <span id="currentTurn">X</span></p>
         </div>
-        <table id="ticTacToeBoard" border="1" style="margin:auto;">
-            <tr>
-                <td onclick="makeMove(0,0)"></td>
-                <td onclick="makeMove(0,1)"></td>
-                <td onclick="makeMove(0,2)"></td>
-            </tr>
-            <tr>
-                <td onclick="makeMove(1,0)"></td>
-                <td onclick="makeMove(1,1)"></td>
-                <td onclick="makeMove(1,2)"></td>
-            </tr>
-            <tr>
-                <td onclick="makeMove(2,0)"></td>
-                <td onclick="makeMove(2,1)"></td>
-                <td onclick="makeMove(2,2)"></td>
-            </tr>
-        </table>
+        <div class="ttt-board-container">
+            <table id="ticTacToeBoard">
+                <tr>
+                    <td onclick="makeMove(0,0)"></td>
+                    <td onclick="makeMove(0,1)"></td>
+                    <td onclick="makeMove(0,2)"></td>
+                </tr>
+                <tr>
+                    <td onclick="makeMove(1,0)"></td>
+                    <td onclick="makeMove(1,1)"></td>
+                    <td onclick="makeMove(1,2)"></td>
+                </tr>
+                <tr>
+                    <td onclick="makeMove(2,0)"></td>
+                    <td onclick="makeMove(2,1)"></td>
+                    <td onclick="makeMove(2,2)"></td>
+                </tr>
+            </table>
+        </div>
         <p id="ticTacToeResult"></p>
-        <button onclick="resetBoard()">New Game</button>
+        <button onclick="resetBoard()" class="ttt-btn">New Game</button>
     </div>
 
     
