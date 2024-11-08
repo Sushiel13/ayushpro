@@ -3,26 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Mini Games Collection</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f0f0; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        .tab { cursor: pointer; padding: 10px 20px; background-color: #4CAF50; color: white; display: inline-block; margin: 10px; }
+        .tab-content { display: none; }
+        .active-tab { display: block; }
+        h1 { color: #333; }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Tic Tac Toe</h1>
-        <div class="board" id="board">
-            <div class="cell" data-index="0"></div>
-            <div class="cell" data-index="1"></div>
-            <div class="cell" data-index="2"></div>
-            <div class="cell" data-index="3"></div>
-            <div class="cell" data-index="4"></div>
-            <div class="cell" data-index="5"></div>
-            <div class="cell" data-index="6"></div>
-            <div class="cell" data-index="7"></div>
-            <div class="cell" data-index="8"></div>
-        </div>
-        <button id="reset">Restart Game</button>
-        <p id="status"></p>
+
+<div class="container">
+    <h1>Welcome to the Games Collection!</h1>
+
+    <!-- Tabs for different games -->
+    <div>
+        <div class="tab" onclick="openGame('ticTacToe')">Tic-Tac-Toe</div>
+        <div class="tab" onclick="openGame('rockPaperScissors')">Rock-Paper-Scissors</div>
+        <div class="tab" onclick="openGame('guessTheNumber')">Guess the Number</div>
+        <div class="tab" onclick="openGame('diceRoller')">Dice Roller</div>
+        <div class="tab" onclick="openGame('snake')">Snake Game</div>
+        <div class="tab" onclick="openGame('memoryGame')">Memory Game</div>
+        <div class="tab" onclick="openGame('hangman')">Hangman</div>
+        <div class="tab" onclick="openGame('quizGame')">Quiz Game</div>
+        <div class="tab" onclick="openGame('whackAMole')">Whack-A-Mole</div>
+        <div class="tab" onclick="openGame('2048')">2048</div>
     </div>
-    <script src="script.js"></script>
+
+    <!-- Game Contents -->
+    <div id="ticTacToe" class="tab-content">
+        <h2>Tic-Tac-Toe</h2>
+        <div class="game-controls">
+            <button onclick="setGameMode('single')" id="singlePlayerBtn">Single Player</button>
+            <button onclick="setGameMode('two')" id="twoPlayerBtn">Two Players</button>
+        </div>
+        <div class="game-info">
+            <p>Current Mode: <span id="gameMode">Two Players</span></p>
+            <p>Current Turn: <span id="currentTurn">X</span></p>
+        </div>
+        <table id="ticTacToeBoard" border="1" style="margin:auto;">
+            <tr>
+                <td onclick="makeMove(0,0)"></td>
+                <td onclick="makeMove(0,1)"></td>
+                <td onclick="makeMove(0,2)"></td>
+            </tr>
+            <tr>
+                <td onclick="makeMove(1,0)"></td>
+                <td onclick="makeMove(1,1)"></td>
+                <td onclick="makeMove(1,2)"></td>
+            </tr>
+            <tr>
+                <td onclick="makeMove(2,0)"></td>
+                <td onclick="makeMove(2,1)"></td>
+                <td onclick="makeMove(2,2)"></td>
+            </tr>
+        </table>
+        <p id="ticTacToeResult"></p>
+        <button onclick="resetBoard()">New Game</button>
+    </div>
+
+    
+        <div id="rockPaperScissors" class="tab-content">
+            <h2>Rock-Paper-Scissors</h2>
+            <div class="game-buttons">
+                <button onclick="playRPS('rock')">Rock ✊</button>
+                <button onclick="playRPS('paper')">Paper ✋</button>
+                <button onclick="playRPS('scissors')">Scissors ✌️</button>
+            </div>
+            <div id="rpsResult" style="margin-top: 20px;">
+                <p>Your choice: <span id="playerChoice">-</span></p>
+                <p>Computer's choice: <span id="computerChoice">-</span></p>
+                <p>Result: <span id="gameResult">-</span></p>
+            </div>
+            <div id="rpsScore" style="margin-top: 20px;">
+                <p>Wins: <span id="wins">0</span> | Losses: <span id="losses">0</span> | Ties: <span id="ties">0</span></p>
+            </div>
+        </div>
+    
+
+    <div id="guessTheNumber" class="tab-content">
+        <h2>Guess the Number</h2>
+        <p>I'm thinking of a number between 1 and 100.</p>
+        <div class="game-controls">
+            <input type="number" id="guessInput" min="1" max="100" placeholder="Enter your guess">
+            <button onclick="makeGuess()">Submit Guess</button>
+            <button onclick="startNewGame()">New Game</button>
+        </div>
+        <p id="guessMessage"></p>
+        <div id="gameStats">
+            <p>Attempts: <span id="attempts">0</span></p>
+            <p>Best Score: <span id="bestScore">-</span></p>
+        </div>
+    </div>
+
+    <div id="diceRoller" class="tab-content">
+        <h2>Dice Roller</h2>
+        <!-- Add Dice Roller code here -->
+    </div>
+
+    <div id="snake" class="tab-content">
+        <h2>Snake Game</h2>
+        <!-- Add Snake Game code here -->
+    </div>
+
+    <div id="memoryGame" class="tab-content">
+        <h2>Memory Game</h2>
+        <!-- Add Memory Game code here -->
+    </div>
+
+    <div id="hangman" class="tab-content">
+        <h2>Hangman</h2>
+        <!-- Add Hangman code here -->
+    </div>
+
+    <div id="quizGame" class="tab-content">
+        <h2>Quiz Game</h2>
+        <!-- Add Quiz Game code here -->
+    </div>
+
+    <div id="whackAMole" class="tab-content">
+        <h2>Whack-A-Mole</h2>
+        <!-- Add Whack-A-Mole code here -->
+    </div>
+
+    <div id="2048" class="tab-content">
+        <h2>2048</h2>
+        <!-- Add 2048 Game code here -->
+    </div>
+</div>
+
+<script>
+    function openGame(gameName) {
+        var i, tabcontent;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        document.getElementById(gameName).style.display = "block";
+    }
+
+    // Tic-Tac-Toe Game (Simple Version)
+    document.getElementById('ticTacToe').innerHTML += `
+        <table id="ticTacToeBoard" border="1" style="margin:auto;">
+            <tr><td onclick="makeMove(0,0)"></td><td onclick="makeMove(0,1)"></td><td onclick="makeMove(0,2)"></td></tr>
+            <tr><td onclick="makeMove(1,0)"></td><td onclick="makeMove(1,1)"></td><td onclick="makeMove(1,2)"></td></tr>
+            <tr><td onclick="makeMove(2,0)"></td><td onclick="makeMove(2,1)"></td><td onclick="makeMove(2,2)"></td></tr>
+        </table>
+        <p id="ticTacToeResult"></p>
+    `;
+
+    let currentPlayer = 'X';
+    let board = [['', '', ''], ['', '', ''], ['', '', '']];
+
+    function makeMove(row, col) {
+        if (board[row][col] === '') {
+            board[row][col] = currentPlayer;
+            document.querySelector(`#ticTacToeBoard tr:nth-child(${row+1}) td:nth-child(${col+1})`).textContent = currentPlayer;
+            if (checkWin()) {
+                document.getElementById('ticTacToeResult').textContent = currentPlayer + " wins!";
+                resetBoard();
+            } else if (board.flat().every(cell => cell !== '')) {
+                document.getElementById('ticTacToeResult').textContent = "It's a draw!";
+                resetBoard();
+            } else {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            }
+        }
+    }
+
+    function checkWin() {
+        for (let i = 0; i < 3; i++) {
+            if (board[i][0] === currentPlayer && board[i][1] === currentPlayer && board[i][2] === currentPlayer) return true;
+            if (board[0][i] === currentPlayer && board[1][i] === currentPlayer && board[2][i] === currentPlayer) return true;
+        }
+        if (board[0][0] === currentPlayer && board[1][1] === currentPlayer && board[2][2] === currentPlayer) return true;
+        if (board[0][2] === currentPlayer && board[1][1] === currentPlayer && board[2][0] === currentPlayer) return true;
+        return false;
+    }
+
+    function resetBoard() {
+        board = [['', '', ''], ['', '', ''], ['', '', '']];
+        currentPlayer = 'X';
+        document.querySelectorAll('#ticTacToeBoard td').forEach(cell => cell.textContent = '');
+    }
+</script>
+
 </body>
 </html>
