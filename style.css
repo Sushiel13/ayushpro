@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ayush's World</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="floating-cartoon">
+        <div class="rocket">
+            <div class="rocket-body">
+                <div class="window"></div>
+            </div>
+            <div class="fin fin-left"></div>
+            <div class="fin fin-right"></div>
+            <div class="exhaust">
+                <div class="flame"></div>
+                <div class="flame"></div>
+                <div class="flame"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#game">Play Tic-Tac-Toe</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Welcome to Ayush's World! 🌟</h1>
+            <div class="intro">
+                <img src="https://placehold.co/200x200" alt="Ayush's avatar" class="avatar">
+                <div class="about-me">
+                    <p>Hey there! I'm Ayush, a 6th grader with a passion for football that could rival the excitement of a World Cup final! When I'm not dribbling on the field, you can find me conquering virtual worlds in BGMI and ROBLOX, where I'm basically a gaming legend in my own mind.</p>
+                    <p>But wait, there's more! I'm not just a sports fanatic and a gaming guru; I also have a flair for music! I can play the Tabala, and I'm always on the lookout for new skills to master. Who knows, maybe I'll be the next big thing in the music world!</p>
+                    <p>So, whether it's scoring goals, leveling up in games, or jamming out on my Tabala, I'm all about living life to the fullest and having a blast while doing it!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="game" class="game-section">
+        <div class="container">
+            <h2>Let's Play Tic-Tac-Toe!</h2>
+            <div class="game-info">
+                <div id="player-turn">Player X's turn</div>
+            </div>
+            <div class="game-board">
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+            </div>
+            <button id="restart">Restart Game</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
