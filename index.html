@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ayush's World</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
@@ -31,24 +31,39 @@
     <section id="game" class="game-section">
         <div class="container">
             <h2>Let's Play Tic-Tac-Toe!</h2>
-            <div class="game-info">
-                <div id="player-turn">Player X's turn</div>
+            
+            <!-- Add player name input form -->
+            <div class="player-setup" id="playerSetup">
+                <div class="input-group">
+                    <input type="text" id="player1" placeholder="Player X Name" required>
+                    <input type="text" id="player2" placeholder="Player O Name" required>
+                    <button id="startGame">Start Game</button>
+                </div>
             </div>
-            <div class="game-board">
-                <div class="cell" data-cell></div>
-                <div class="cell" data-cell></div>
-                <div class="cell" data-cell></div>
-                <div class="cell" data-cell></div>
-                <div class="cell" data-cell></div>
-                <div class="cell" data-cell></div>
-                <div class="cell" data-cell></div>
-                <div class="cell" data-cell></div>
-                <div class="cell" data-cell></div>
+
+            <!-- Game board (initially hidden) -->
+            <div class="game-container" id="gameContainer" style="display: none;">
+                <div class="game-info">
+                    <div id="player-turn" class="player-turn"></div>
+                </div>
+                <div class="game-board">
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                    <div class="cell" data-cell></div>
+                </div>
+                <button id="restart">Restart Game</button>
             </div>
-            <button id="restart">Restart Game</button>
         </div>
     </section>
 
-        <script src="https://github.com/Sushiel13/ayushpro/blob/9b98c283448047a0669b656c46a01b185e7add7a/script.js"></script>
+    <script src="https://github.com/Sushiel13/ayushpro/blob/9b98c283448047a0669b656c46a01b185e7add7a/script.js"></script>
 </body>
 </html>
+
+
