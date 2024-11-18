@@ -1,10 +1,16 @@
+let player1Name = '';
+let player2Name = '';
+let currentPlayer = '';
+let isXTurn = true;
+let gameActive = false;
+
+const playerSetup = document.getElementById('playerSetup');
+const gameContainer = document.getElementById('gameContainer');
 const gameBoard = document.querySelector('.game-board');
 const cells = document.querySelectorAll('[data-cell]');
 const playerTurn = document.getElementById('player-turn');
 const restartButton = document.getElementById('restart');
-
-let isXTurn = true;
-let gameActive = true;
+const startGameButton = document.getElementById('startGame');
 
 const winningCombinations = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
@@ -12,26 +18,53 @@ const winningCombinations = [
     [0, 4, 8], [2, 4, 6] // Diagonals
 ];
 
-cells.forEach(cell => {
-    cell.addEventListener('click', handleClick, { once: true });
+// Start Game Setup
+startGameButton.addEventListener('click', () => {
+    player1Name = document.getElementById('player1').value.trim();
+    player2Name = document.getElementById('player2').value.trim();
+
+    if (player1Name && player2Name) {
+        gameActive = true;
+        playerSetup.style.display = 'none';
+        gameContainer.style.display = 'block';
+        currentPlayer = player1Name;
+        updatePlayerTurn();
+        initializeGame();
+    } else {
+        alert('Please enter names for both players!');
+    }
 });
 
-restartButton.addEventListener('click', restartGame);
+function initializeGame() {
+    cells.forEach(cell => {
+        cell.textContent = '';
+        cell.classList.remove('winner');
+        cell.addEventListener('click', handleClick, { once: true });
+    });
+    isXTurn = true;
+    currentPlayer = player1Name;
+    updatePlayerTurn();
+}
 
 function handleClick(e) {
     const cell = e.target;
     if (!gameActive || cell.textContent !== '') return;
 
-    const currentPlayer = isXTurn ? 'X' : 'O';
-    placeMark(cell, currentPlayer);
+    const currentMark = isXTurn ? 'X' : 'O';
+    placeMark(cell, currentMark);
 
-    if (checkWin(currentPlayer)) {
+    if (checkWin(currentMark)) {
         endGame(false);
     } else if (isDraw()) {
         endGame(true);
     } else {
         swapTurns();
+        updatePlayerTurn();
     }
+}
+
+function updatePlayerTurn() {
+    playerTurn.textContent = `${currentPlayer}'s turn (${isXTurn ? 'X' : 'O'})`;
 }
 
 function placeMark(cell, mark) {
@@ -40,38 +73,41 @@ function placeMark(cell, mark) {
 
 function swapTurns() {
     isXTurn = !isXTurn;
-    playerTurn.textContent = `Player ${isXTurn ? 'X' : 'O'}'s turn`;
+    currentPlayer = isXTurn ? player1Name : player2Name;
 }
 
-function checkWin(currentPlayer) {
+function checkWin(currentMark) {
     return winningCombinations.some(combination => {
-        return combination.every(index => {
-            return cells[index].textContent === currentPlayer;
-        });
+        if (combination.every(index => cells[index].textContent === currentMark)) {
+            // Highlight winning cells
+            combination.forEach(index => cells[index].classList.add('winner'));
+            return true;
+        }
+        return false;
     });
 }
 
 function isDraw() {
-    return [...cells].every(cell => {
-        return cell.textContent !== '';
-    });
+    return [...cells].every(cell => cell.textContent !== '');
 }
 
 function endGame(draw) {
     gameActive = false;
     if (draw) {
-        playerTurn.textContent = "It's a draw!";
+        playerTurn.innerHTML = `<div class="winner-announcement">It's a Draw!</div>`;
     } else {
-        playerTurn.textContent = `Player ${isXTurn ? 'X' : 'O'} wins!`;
+        playerTurn.innerHTML = `<div class="winner-announcement">🎉 ${currentPlayer} Wins! 🎉</div>`;
     }
 }
 
-function restartGame() {
+restartButton.addEventListener('click', () => {
     gameActive = true;
-    isXTurn = true;
-    playerTurn.textContent = "Player X's turn";
     cells.forEach(cell => {
         cell.textContent = '';
+        cell.classList.remove('winner');
         cell.addEventListener('click', handleClick, { once: true });
     });
-}
+    isXTurn = true;
+    currentPlayer = player1Name;
+    updatePlayerTurn();
+});
