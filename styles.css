@@ -544,3 +544,216 @@ body {
 .cloud-puff:nth-child(2) { top: -20px; left: 15px; }
 .cloud-puff:nth-child(3) { top: -10px; right: 15px; }
 .cloud-puff:nth-child(4) { top: -15px; left: 45px; }
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    /* Container adjustments */
+    .container {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    /* Navigation adjustments */
+    nav {
+        padding: 0.5rem;
+    }
+
+    nav ul {
+        gap: 1rem;
+    }
+
+    /* Hero section adjustments */
+    .intro {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .avatar {
+        width: 150px;
+        height: 150px;
+    }
+
+    .about-me {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Game section adjustments */
+    .game-board {
+        grid-template-columns: repeat(3, 80px);
+        gap: 3px;
+    }
+
+    .cell {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+
+    .game-info {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+    }
+
+    #restart {
+        padding: 8px 16px;
+        font-size: 1rem;
+    }
+
+    /* Rocket adjustments */
+    .rocket {
+        width: 40px;
+        height: 70px;
+    }
+
+    .rocket-body {
+        width: 30px;
+        height: 50px;
+    }
+
+    .window {
+        width: 15px;
+        height: 15px;
+        top: 10px;
+        left: 7px;
+    }
+
+    .fin {
+        width: 15px;
+        height: 20px;
+    }
+
+    .exhaust {
+        bottom: -20px;
+        width: 15px;
+        height: 20px;
+    }
+
+    .flame {
+        width: 6px;
+        height: 20px;
+    }
+
+    .flame:nth-child(2) {
+        height: 25px;
+    }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+    /* Further adjustments for smaller screens */
+    .container {
+        padding: 0.5rem;
+        margin: 0.25rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .game-board {
+        grid-template-columns: repeat(3, 70px);
+    }
+
+    .cell {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+
+    .avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Adjust text sizes */
+    p {
+        font-size: 0.9rem;
+    }
+
+    .game-info {
+        font-size: 1rem;
+    }
+
+    /* Navigation for very small screens */
+    nav ul {
+        gap: 0.5rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 1rem;
+    }
+
+    .intro {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .game-section {
+        min-height: auto;
+    }
+}
+
+/* Fix for 3D effects on mobile */
+@media (hover: none) {
+    .container:hover,
+    .cell:hover,
+    .avatar:hover,
+    nav a:hover {
+        transform: none;
+    }
+
+    .game-board {
+        transform: none;
+    }
+
+    .game-board:hover {
+        transform: none;
+    }
+}
+
+/* Prevent text overflow */
+* {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Improve touch targets */
+button,
+.cell,
+nav a {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Optimize animations for mobile */
+@media (prefers-reduced-motion: reduce) {
+    .floating-cartoon,
+    .intro,
+    .flame,
+    .rocket {
+        animation: none;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
